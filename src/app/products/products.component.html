@@ -1,0 +1,11 @@
+<section class="products">
+  <div class="section-title">
+    <h2>our courses</h2>
+  </div>
+  <div class="products-center">
+    <app-product
+      *ngFor="let product of products; let i = index"
+      [product]="product"
+    ></app-product>
+  </div>
+</section>

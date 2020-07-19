@@ -1,0 +1,12 @@
+<article class="product">
+  <div class="img-container">
+    <img src="{{ product.image }}" alt="product" class="product-img" />
+    <a class="bag-btn" data-id="{{ product.id }}" routerLink="/shopping-cart">
+      <i class="fas fa-shopping-cart"></i>
+      Add to bag
+    </a>
+  </div>
+  <h3>{{ product.name }}</h3>
+  <h4>Price: ${{ product.price }}</h4>
+  <p>{{ product.label }}</p>
+</article>

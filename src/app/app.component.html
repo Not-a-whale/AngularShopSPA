@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<header class="header">
+  <div class="banner">
+    <div class="banner-title">Great Courses!</div>
+    <button class="banner-btn">Buy now and learn!</button>
+  </div>
+</header>
+<main [@routeAnimations]="prepareRoute(outlet)" class="content">
+  <router-outlet #outlet="outlet"></router-outlet>
+</main>

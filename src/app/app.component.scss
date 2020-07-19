@@ -1,0 +1,38 @@
+.header {
+  min-height: calc(100vh - 60px);
+  background: url("../assets/courses.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .banner {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  .banner-title {
+    font-size: 3.4rem;
+    text-transform: uppercase;
+    letter-spacing: var(--mainSpacing);
+    margin-bottom: 3rem;
+  }
+  .banner-btn {
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    letter-spacing: var(--mainSpacing);
+    font-size: 1rem;
+    background: var(--primaryColor);
+    color: var(--mainWhite);
+    border: 1px solid var(--primaryColor);
+    transition: var(--mainTransition);
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+  }
+  .banner-btn:hover {
+    background: transparent;
+    color: var(--primaryColor);
+  }
+}
