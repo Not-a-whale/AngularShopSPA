@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from '../../ShoppingCartService';
+import { Item, ShoppingCartService } from '../../ShoppingCartService';
 
 @Component({
   selector: 'app-shopping-cart-item',
@@ -9,9 +9,19 @@ import { Item } from '../../ShoppingCartService';
 export class ShoppingCartItemComponent implements OnInit {
   @Input() Item: Item;
 
-  constructor() {}
-
-  ngOnInit(): void {
-    console.log(this.Item);
+  increaseQuantity(): void {
+    this.ShoppingCartService.addProduct(this.Item.id);
   }
+
+  decreaseQuantity(): void {
+    this.ShoppingCartService.deleteProduct(this.Item.id);
+  }
+
+  removeGroupOfItems(): void {
+    this.ShoppingCartService.removeGroup(this.Item.id);
+  }
+
+  constructor(private ShoppingCartService: ShoppingCartService) {}
+
+  ngOnInit(): void {}
 }

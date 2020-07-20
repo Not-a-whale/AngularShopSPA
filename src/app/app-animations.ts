@@ -22,7 +22,8 @@ function slideTo(direction) {
       ':enter, :leave',
       [
         style({
-          position: 'relative',
+          position: 'absolute',
+          top: 0,
           [direction]: 0,
           width: '100%',
         }),

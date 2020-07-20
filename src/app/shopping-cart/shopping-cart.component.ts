@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { ShoppingCartService } from '../ShoppingCartService';
 import { Item } from '../ShoppingCartService';
 import { Subscription } from 'rxjs';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,17 +11,27 @@ import { Subscription } from 'rxjs';
 })
 export class ShoppingCartComponent implements OnInit {
   itemsChangedSub: Subscription;
+  amountChangedSub: Subscription;
   changedItems: Item[];
+  price: number;
+
+  deleteAll(): void {
+    this.ShoppingCartService.removeAll();
+  }
 
   constructor(private ShoppingCartService: ShoppingCartService) {}
 
   ngOnInit(): void {
+    this.price = this.ShoppingCartService.getAmountsOfAllPricesAndItems().priceTotal;
+    this.changedItems = this.ShoppingCartService.getAllCart();
     this.itemsChangedSub = this.ShoppingCartService.addedItemsChanged.subscribe(
       (data) => {
-        if (data.length > 0) {
-          this.changedItems = data;
-          console.log('this is the data' + this.changedItems[0].name);
-        }
+        this.changedItems = data;
+      }
+    );
+    this.amountChangedSub = this.ShoppingCartService.allPriceChanged.subscribe(
+      (num) => {
+        this.price = num;
       }
     );
   }

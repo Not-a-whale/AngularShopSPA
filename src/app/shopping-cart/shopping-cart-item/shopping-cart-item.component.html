@@ -5,12 +5,16 @@
       <h4>{{ Item.name }}</h4>
       <h5>${{ Item.price }}</h5>
       <p>{{ Item.label }}</p>
-      <span class="remove-item" data-id="{{ Item.id }}">remove</span>
+      <span class="remove-item" (click)="removeGroupOfItems()">remove</span>
     </div>
     <div class="arrows">
-      <i class="fas fa-chevron-up" data-id=""></i>
+      <span (click)="increaseQuantity()">
+        <i class="fas fa-chevron-up" ></i>
+      </span>
       <p class="item-amount">{{ Item.amount }}</p>
-      <i class="fas fa-chevron-down" data-id=""></i>
+      <span (click)="decreaseQuantity()">
+        <i class="fas fa-chevron-down"></i>
+      </span>
     </div>
   </div>
 </div>

@@ -34,5 +34,7 @@
   .banner-btn:hover {
     background: transparent;
     color: var(--primaryColor);
+    outline: none;
+    text-decoration: none;
   }
 }

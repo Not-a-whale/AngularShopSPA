@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
-<header class="header">
+<header class="header animate__slideInDown">
   <div class="banner">
     <div class="banner-title">Great Courses!</div>
-    <button class="banner-btn">Buy now and learn!</button>
+    <button class="banner-btn" (click)="scrollToShop()">Buy now and learn!</button>
   </div>
 </header>
-<main [@routeAnimations]="prepareRoute(outlet)" class="content">
+<main [@routeAnimations]="prepareRoute(outlet)" class="content" id="shop" #shops>
   <router-outlet #outlet="outlet"></router-outlet>
 </main>

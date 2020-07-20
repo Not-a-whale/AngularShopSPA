@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ShoppingCartService } from '../ShoppingCartService';
-import { Item } from '../ShoppingCartService';
-import { Subscription } from 'rxjs';
+import {Item, ShoppingCartService} from '../ShoppingCartService';
+import {DataStorageService} from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-products',
@@ -10,13 +9,10 @@ import { Subscription } from 'rxjs';
 })
 export class ProductsComponent implements OnInit {
   products: Item[];
-  prodSub: Subscription;
 
   constructor(private ShoppingCartService: ShoppingCartService) {}
 
   ngOnInit(): void {
-    this.prodSub = this.ShoppingCartService.itemsChanged.subscribe((data) => {
-      this.products = data;
-    });
+    this.products = this.ShoppingCartService.getAllProducts();
   }
 }

@@ -1,16 +1,17 @@
 <div class="shopping_cart">
-  <span class="close-cart">
+  <span class="close-cart" routerLink="/products" style="margin-top: 1rem; outline: none">
     <i class="fas fa-window-close"></i>
   </span>
   <h2>Your cart</h2>
   <div class="cart-content">
+    <h2 *ngIf="changedItems.length === 0" style="margin-top: 2rem; margin-bottom: 2rem; color: darkred">Your cart is empty!</h2>
     <app-shopping-cart-item
       *ngFor="let Item of changedItems"
       [Item]="Item"
     ></app-shopping-cart-item>
   </div>
   <div class="cart-footer">
-    <h3>your total : $ <span class="cart-total">0</span></h3>
-    <button class="clear-cart banner-btn">clear cart</button>
+    <h3>your total : $ <span class="cart-total">{{ price }}</span></h3>
+    <button class="clear-cart banner-btn" (click)="deleteAll()">clear cart</button>
   </div>
 </div>
