@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
     this.main.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
   }
 
+
   constructor(private shoppingCartService: ShoppingCartService, private DataStoreService: DataStorageService) {}
 
   ngOnInit() {
