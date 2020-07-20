@@ -1,0 +1,16 @@
+<div class="cart-item">
+  <div class="cart-item--inside">
+    <img src="{{ Item.image }}" alt="product" />
+    <div class="description">
+      <h4>{{ Item.name }}</h4>
+      <h5>${{ Item.price }}</h5>
+      <p>{{ Item.label }}</p>
+      <span class="remove-item" data-id="{{ Item.id }}">remove</span>
+    </div>
+    <div class="arrows">
+      <i class="fas fa-chevron-up" data-id=""></i>
+      <p class="item-amount">{{ Item.amount }}</p>
+      <i class="fas fa-chevron-down" data-id=""></i>
+    </div>
+  </div>
+</div>

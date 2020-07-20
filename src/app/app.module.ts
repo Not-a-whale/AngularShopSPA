@@ -12,6 +12,7 @@ import { pipe } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Router, Event, Scroll } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { ShoppingCartItemComponent } from './shopping-cart/shopping-cart-item/shopping-cart-item.component';
 
 @NgModule({
   declarations: [
@@ -20,26 +21,12 @@ import { ViewportScroller } from '@angular/common';
     ProductComponent,
     ProductsComponent,
     ShoppingCartComponent,
+    ShoppingCartItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(router: Router, viewportScroller: ViewportScroller) {
-    router.events
-      .pipe(filter((e: Event): e is Scroll => e instanceof Scroll))
-      .subscribe((e) => {
-        if (e.position) {
-          // backward navigation
-          viewportScroller.scrollToPosition(e.position);
-        } else if (e.anchor) {
-          // anchor navigation
-          viewportScroller.scrollToAnchor(e.anchor);
-        } else {
-          // forward navigation
-          viewportScroller.scrollToPosition([0, 0]);
-        }
-      });
-  }
+  constructor(router: Router, viewportScroller: ViewportScroller) {}
 }

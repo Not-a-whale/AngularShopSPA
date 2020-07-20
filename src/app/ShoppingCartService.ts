@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createClient, Entry } from 'contentful';
-import { Subject, identity } from 'rxjs';
+import { Subject, identity, Subscription, BehaviorSubject } from 'rxjs';
 
 const CONFIG = {
   space: 'msp0xh0f2n25',
@@ -17,6 +17,7 @@ export interface Item {
   label: String;
   price: Number;
   image: String;
+  amount?: number;
 }
 
 @Injectable({
@@ -24,7 +25,10 @@ export interface Item {
 })
 export class ShoppingCartService {
   shoppingCart: Item[];
+  inCart: Item[] = [];
+  addedItemsChanged = new BehaviorSubject<Item[]>(this.inCart);
   itemsChanged = new Subject<Item[]>();
+  subscr: Subscription;
 
   private cdaClient = createClient({
     space: CONFIG.space,
@@ -47,11 +51,19 @@ export class ShoppingCartService {
   }
 
   setItems(items) {
-    this.shoppingCart = items.map((item) => {
-      const { id, label, price, name } = item.fields;
-      const image = item.fields.image.fields.file.url;
-      return { id, name, label, price, image };
-    });
+    this.shoppingCart = items
+      .map((item) => {
+        const { id, label, price, name } = item.fields;
+        const image = item.fields.image.fields.file.url;
+        return { id, name, label, price, image, amount: 1 };
+      })
+      .reverse();
     this.itemsChanged.next(this.shoppingCart.slice());
+  }
+
+  addProduct(id) {
+    const addedItem = this.shoppingCart.find((item) => item.id === id);
+    this.inCart.push(addedItem);
+    this.addedItemsChanged.next(this.inCart.slice());
   }
 }

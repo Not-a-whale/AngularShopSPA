@@ -1,79 +1,51 @@
 .shopping_cart {
-  width: 100%;
-  background-color: rgba(250, 218, 221, 0.8);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  .cart {
-    width: 100%;
-    overflow: scroll;
-    z-index: 3;
-    background: rgba(250, 218, 221, 0.8);
-    padding: 1.5rem;
-    transition: var(--mainTransition);
-  }
+  justify-content: center;
+  background-color: #fadadd;
+  transition: var(--mainTransition);
 
   .close-cart {
-    font-size: 1.7rem;
-    cursor: pointer;
-  }
-  .cart h2 {
-    text-transform: capitalize;
-    text-align: center;
-    letter-spacing: var(--mainSpacing);
-    margin-bottom: 2rem;
-  }
-  .banner-btn {
-    text-transform: uppercase;
-    letter-spacing: var(--mainSpacing);
-    font-size: 1rem;
-    color: #222;
-    cursor: pointer;
-    padding: 1rem 3rem;
-    margin-top: 1rem;
-  }
-}
+    font-size: 2rem;
 
-.cart-item {
-  display: grid;
-  align-items: center;
-  grid-template-columns: auto 1fr auto;
-  grid-column-gap: 1.5rem;
-  margin: 1.5rem 0;
-  width: 45%;
-}
-.cart-item img {
-  width: 75px;
-  height: 75px;
-}
-.cart-item h4 {
-  font-size: 0.85rem;
-  text-transform: capitalize;
-  letter-spacing: var(--mainSpacing);
-}
-.cart-item h5 {
-  margin: 0.5rem 0;
-  letter-spacing: var(--mainSpacing);
-}
-.item-amount {
-  text-align: center;
-}
-.remove-item {
-  color: grey;
-  cursor: pointer;
-}
-.fa-chevron-up,
-.fa-chevron-down {
-  color: var(--primaryColor);
-  cursor: pointer;
-}
+    &:hover {
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+  h2 {
+    font-size: 3rem;
+  }
 
-.cart-footer {
-  margin-top: 2rem;
-  letter-spacing: var(--mainSpacing);
-  text-align: center;
-}
-.cart-footer h3 {
-  text-transform: capitalize;
-  margin-bottom: 1rem;
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-footer {
+    h3 {
+      font-size: 2rem;
+    }
+
+    button {
+      width: 20rem;
+      height: 3rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      background-color: #eee;
+      color: rgba(0, 0, 0, 0.6);
+      outline: none;
+      border: none;
+      border-radius: 1rem;
+      text-transform: uppercase;
+      font-size: 1rem;
+      transition: var(--mainTransition);
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #eee;
+      }
+    }
+  }
 }

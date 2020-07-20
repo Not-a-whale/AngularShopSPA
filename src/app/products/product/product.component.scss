@@ -1,3 +1,15 @@
+.product {
+  background-color: var(--mainWhite);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 1.4rem 1.4rem 4rem rgba(255, 255, 255, 0.8);
+  transition: var(--mainTransition);
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+}
+
 .img-container {
   position: relative;
   overflow: hidden;

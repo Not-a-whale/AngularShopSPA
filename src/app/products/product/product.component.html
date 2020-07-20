@@ -1,10 +1,15 @@
 <article class="product">
   <div class="img-container">
     <img src="{{ product.image }}" alt="product" class="product-img" />
-    <a class="bag-btn" data-id="{{ product.id }}" routerLink="/shopping-cart">
+    <button
+      class="bag-btn"
+      data-id="{{ product.id }}"
+      routerLink="/shopping-cart"
+      (click)="addItem(product.id)"
+    >
       <i class="fas fa-shopping-cart"></i>
       Add to bag
-    </a>
+    </button>
   </div>
   <h3>{{ product.name }}</h3>
   <h4>Price: ${{ product.price }}</h4>

@@ -1,25 +1,16 @@
 <div class="shopping_cart">
-  <div class="cart">
-    <span class="close-cart">
-      <i class="fas fa-window-close"></i>
-    </span>
-    <h2>Your cart</h2>
-    <div class="cart-content">
-      <img src="" alt="product" />
-      <div>
-        <h4></h4>
-        <h5></h5>
-        <span class="remove-item" data-id="">remove</span>
-      </div>
-      <div>
-        <i class="fas fa-chevron-up" data-id=""></i>
-        <p class="item-amount"></p>
-        <i class="fas fa-chevron-down" data-id=""></i>
-      </div>
-    </div>
-    <div class="cart-footer">
-      <h3>your total : $ <span class="cart-total">0</span></h3>
-      <button class="clear-cart banner-btn">clear cart</button>
-    </div>
+  <span class="close-cart">
+    <i class="fas fa-window-close"></i>
+  </span>
+  <h2>Your cart</h2>
+  <div class="cart-content">
+    <app-shopping-cart-item
+      *ngFor="let Item of changedItems"
+      [Item]="Item"
+    ></app-shopping-cart-item>
+  </div>
+  <div class="cart-footer">
+    <h3>your total : $ <span class="cart-total">0</span></h3>
+    <button class="clear-cart banner-btn">clear cart</button>
   </div>
 </div>
