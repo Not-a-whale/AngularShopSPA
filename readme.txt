@@ -1,0 +1,2 @@
+In order to run the application use Dockerfile inside of dist folder and type "docker build -t ng-docker-example ."
+Or copy a docker-compose.yml to a folder that is directly outside of your AngularShopCart folder and use a command "docker-compose run angular-service" from that external directory.
