@@ -31,6 +31,7 @@ export class ShoppingCartService {
   shoppingCart: Item[];
   inCart: Item[] = [];
   addedItemsChanged = new BehaviorSubject<Item[]>(this.inCart);
+  productsFetched = new BehaviorSubject<Item[]>(this.shoppingCart);
   allPriceChanged = new Subject<number>();
   numberOfItemsChanged = new Subject<number>();
 
@@ -64,6 +65,8 @@ export class ShoppingCartService {
       .reverse();
     this.dataStoreService.saveProducts(this.shoppingCart);
     this.inCart = this.getAllCart();
+    this.shoppingCart = this.getAllProducts();
+    this.productsFetched.next(this.shoppingCart);
     this.setCartValue();
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Item, ShoppingCartService} from '../ShoppingCartService';
-import {DataStorageService} from '../shared/data-storage.service';
+import { Item, ShoppingCartService } from '../ShoppingCartService';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -9,10 +9,16 @@ import {DataStorageService} from '../shared/data-storage.service';
 })
 export class ProductsComponent implements OnInit {
   products: Item[];
+  prodSub: Subscription;
 
   constructor(private ShoppingCartService: ShoppingCartService) {}
 
   ngOnInit(): void {
     this.products = this.ShoppingCartService.getAllProducts();
+    this.prodSub = this.ShoppingCartService.productsFetched.subscribe(
+      (data) => {
+        this.products = data;
+      }
+    );
   }
 }

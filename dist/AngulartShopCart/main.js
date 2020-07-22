@@ -54,6 +54,7 @@ class ShoppingCartService {
         this.dataStoreService = dataStoreService;
         this.inCart = [];
         this.addedItemsChanged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this.inCart);
+        this.productsFetched = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this.shoppingCart);
         this.allPriceChanged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         this.numberOfItemsChanged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         this.cdaClient = Object(contentful__WEBPACK_IMPORTED_MODULE_1__["createClient"])({
@@ -78,6 +79,8 @@ class ShoppingCartService {
             .reverse();
         this.dataStoreService.saveProducts(this.shoppingCart);
         this.inCart = this.getAllCart();
+        this.shoppingCart = this.getAllProducts();
+        this.productsFetched.next(this.shoppingCart);
         this.setCartValue();
     }
     addProduct(id) {
@@ -560,6 +563,9 @@ class ProductsComponent {
     }
     ngOnInit() {
         this.products = this.ShoppingCartService.getAllProducts();
+        this.prodSub = this.ShoppingCartService.productsFetched.subscribe((data) => {
+            this.products = data;
+        });
     }
 }
 ProductsComponent.ɵfac = function ProductsComponent_Factory(t) { return new (t || ProductsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ShoppingCartService__WEBPACK_IMPORTED_MODULE_1__["ShoppingCartService"])); };
