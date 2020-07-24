@@ -1,4 +1,10 @@
-import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  NgZone,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { ShoppingCartService } from '../ShoppingCartService';
 import { Item } from '../ShoppingCartService';
 import { Subscription } from 'rxjs';
@@ -9,7 +15,7 @@ import { DataStorageService } from '../shared/data-storage.service';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss'],
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit, OnDestroy {
   itemsChangedSub: Subscription;
   amountChangedSub: Subscription;
   changedItems: Item[];
@@ -34,5 +40,10 @@ export class ShoppingCartComponent implements OnInit {
         this.price = num;
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.itemsChangedSub.unsubscribe();
+    this.amountChangedSub.unsubscribe();
   }
 }
